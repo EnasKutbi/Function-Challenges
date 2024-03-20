@@ -7,11 +7,11 @@ namespace FunctionChallenges
         static void Main(string[] args)
         {
             // Challenge 1: String and Number Processor
-            Console.WriteLine("Challenge 1: String and Number Processor");
-            StringNumberProcessor("Hello", 100, 200, "World"); // Expected outcome: "Hello World; 300"
+            /*Console.WriteLine("Challenge 1: String and Number Processor");
+            StringNumberProcessor("Hello", 100, 200, "World"); // Expected outcome: "Hello World; 300"*/
 
             // Challenge 2: Object Swapper
-            Console.WriteLine("\nChallenge 2: Object Swapper");
+            /*Console.WriteLine("\nChallenge 2: Object Swapper");
             int num1 = 25, num2 = 30;
             int num 3 = 10, num4 = 30;
             string str1 = "HelloWorld", str2 = "Programming";
@@ -27,18 +27,62 @@ namespace FunctionChallenges
             SwapObjects(ref num1, str1); // Error: Objects must be of same types
 
             Console.WriteLine($"Numbers: {num1}, {num2}");
-            Console.WriteLine($"Strings: {str1}, {str2}");
+            Console.WriteLine($"Strings: {str1}, {str2}");*/
 
             // Challenge 3: Guessing Game
             Console.WriteLine("\nChallenge 3: Guessing Game");
             // Uncomment to test the GuessingGame method
-            // GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
+            GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
 
             // Challenge 4: Simple Word Reversal
-            Console.WriteLine("\nChallenge 4: Simple Word Reversal");
+            /*Console.WriteLine("\nChallenge 4: Simple Word Reversal");
             string sentence = "This is the original sentence!";
             string reversed = ReverseWords(sentence);
-            Console.WriteLine(reversed); // Expected outcome: "sihT si eht lanigiro !ecnetnes"
+            Console.WriteLine(reversed); // Expected outcome: "sihT si eht lanigiro !ecnetnes"*/
+        }
+
+        public static void GuessingGame(){
+            try
+            {
+                Random random = new Random();
+                int randomNum = random.Next(1, 100);
+                while (true)
+                {
+                    Console.Write("Enter the Number you Guess Between 1 to 100: ");
+                    string input = Console.ReadLine();
+                    if (!int.TryParse(input, out int guessNum))
+                    {
+                        Console.WriteLine("Invalid input. Please enter a Number between 1 to 100.");
+                        continue;
+                    }
+                    if (guessNum > 100 || guessNum < 1)
+                    {
+                        Console.WriteLine("Invalid input. Please enter a Number between 1 to 100.");
+                        continue;
+                    }
+                    if (guessNum == randomNum)
+                    {
+                        Console.WriteLine("Well done, you guessed the number");
+                        break;
+                    } 
+                    else if (guessNum > randomNum)
+                    {
+                        Console.WriteLine("The number you guessed is bigger than the number");
+                        continue;
+                    }
+                    else if (guessNum < randomNum)
+                    {
+                        Console.WriteLine("The number you guessed is smaller than the number");
+                        continue;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
         }
     }
 }
