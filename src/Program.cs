@@ -7,8 +7,8 @@ namespace FunctionChallenges
         static void Main(string[] args)
         {
             // Challenge 1: String and Number Processor
-            /*Console.WriteLine("Challenge 1: String and Number Processor");
-            StringNumberProcessor("Hello", 100, 200, "World"); // Expected outcome: "Hello World; 300"*/
+            Console.WriteLine("Challenge 1: String and Number Processor");
+            StringNumberProcessor("Hello", 100, 200, "World"); // Expected outcome: "Hello World; 300"
 
             // Challenge 2: Object Swapper
             /*Console.WriteLine("\nChallenge 2: Object Swapper");
@@ -41,7 +41,30 @@ namespace FunctionChallenges
             Console.WriteLine(reversed); // Expected outcome: "sihT si eht lanigiro !ecnetnes"*/
         }
 
-        public static void GuessingGame(){
+        public static void StringNumberProcessor(params object[] input)
+        {
+            int numbers = 0;
+            string sentence = "";
+            foreach (var item in input)
+            {
+                if (item is string)
+                {
+                    sentence += item + " ";
+                }
+                else if(item is int)
+                {
+                    numbers += (int)item;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input");
+                }
+            }
+            Console.WriteLine($"{sentence}; {numbers}");
+        }
+
+        public static void GuessingGame()
+        {
             try
             {
                 Random random = new Random();
@@ -64,7 +87,7 @@ namespace FunctionChallenges
                     {
                         Console.WriteLine("Well done, you guessed the number");
                         break;
-                    } 
+                    }
                     else if (guessNum > randomNum)
                     {
                         Console.WriteLine("The number you guessed is bigger than the number");
