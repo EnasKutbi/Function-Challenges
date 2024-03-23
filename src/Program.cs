@@ -8,12 +8,12 @@ namespace FunctionChallenges
         {
             // Challenge 1: String and Number Processor
             Console.WriteLine("Challenge 1: String and Number Processor");
-            StringNumberProcessor("Hello", 100, 200, "World"); // Expected outcome: "Hello World; 300"
+            // StringNumberProcessor("Hello", 100, 200, "World"); // Expected outcome: "Hello World; 300"
 
             // Challenge 2: Object Swapper
             /*Console.WriteLine("\nChallenge 2: Object Swapper");
             int num1 = 25, num2 = 30;
-            int num 3 = 10, num4 = 30;
+            int num3 = 10, num4 = 30;
             string str1 = "HelloWorld", str2 = "Programming";
             string str3 = "Hi", str4 = "Programming";
                           
@@ -32,13 +32,13 @@ namespace FunctionChallenges
             // Challenge 3: Guessing Game
             Console.WriteLine("\nChallenge 3: Guessing Game");
             // Uncomment to test the GuessingGame method
-            GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
+            // GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
 
             // Challenge 4: Simple Word Reversal
-            /*Console.WriteLine("\nChallenge 4: Simple Word Reversal");
+            Console.WriteLine("\nChallenge 4: Simple Word Reversal");
             string sentence = "This is the original sentence!";
             string reversed = ReverseWords(sentence);
-            Console.WriteLine(reversed); // Expected outcome: "sihT si eht lanigiro !ecnetnes"*/
+            Console.WriteLine(reversed); // Expected outcome: "sihT si eht lanigiro !ecnetnes"
         }
 
         public static void StringNumberProcessor(params object[] input)
@@ -49,7 +49,7 @@ namespace FunctionChallenges
             {
                 if (item is string)
                 {
-                    sentence += item + " ";
+                    sentence += " " + item;
                 }
                 else if(item is int)
                 {
@@ -62,6 +62,13 @@ namespace FunctionChallenges
             }
             Console.WriteLine($"{sentence}; {numbers}");
         }
+
+        // public static void SwapObjects(ref dynamic value1, ref dynamic value2){
+        //     if (value1.GetType() == value2.GetType)
+        //     {
+        //         Console.WriteLine("E");
+        //     }
+        // }
 
         public static void GuessingGame()
         {
@@ -104,8 +111,17 @@ namespace FunctionChallenges
             {
                 Console.WriteLine(e.Message);
             }
+        }
 
-
+        public static string ReverseWords(string input){
+                string[] sentence = input.Trim().Split(" ");
+                string reversedSentence = "";
+                foreach (string word in sentence)
+                {
+                string reversedWord = new string(word.Reverse().ToArray());
+                    reversedSentence += reversedWord + " ";
+                }
+            return reversedSentence;
         }
     }
 }
